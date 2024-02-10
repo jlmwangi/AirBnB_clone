@@ -1,6 +1,7 @@
-#!/usr/bin/python3
+i#!/usr/bin/python3
 import cmd
-
+from models.user import User
+from models.engine.file_storage import FileStorage
 
 class MyConsole(cmd.Cmd):
     """instantiates the command interpreter"""
