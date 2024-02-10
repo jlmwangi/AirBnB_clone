@@ -3,9 +3,8 @@ import cmd
 from models.user import User
 from models.engine.file_storage import FileStorage
 
-class MyConsole(cmd.Cmd):
+class HBNBCommand(cmd.Cmd):
     """instantiates the command interpreter"""
-    intro = "Welcome to hbnb"
     prompt = "(hbnb) "
 
     def __init__(self):
@@ -59,7 +58,11 @@ class MyConsole(cmd.Cmd):
         else:
             print("user not found")
 
-    def do_exit(self, args):
+    def do_help(self):
+        """provides more info on the various methods"""
+
+
+    def do_quit(self, args):
         """exits the console"""
         return True
 
@@ -70,4 +73,4 @@ class MyConsole(cmd.Cmd):
 
 
 if __name__ == "__main__":
-    MyConsole().cmdloop()
+    HBNBCommand().cmdloop()
