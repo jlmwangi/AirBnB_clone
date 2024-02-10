@@ -23,8 +23,10 @@ class BaseModel():
     def to_dict(self):
         """returns a dict containing all key/values of the instance"""
         return {
+                'my_number': self.my_number,
+                'name': self.name,
                 '__class__': self.__class__.__name__,
-                'created_at': str(self.created_at.isoformat("T")),
-                'updated_at': str(self.updated_at.isoformat("T"))
+                'created_at': self.created_at.isoformat("T"),
+                'updated_at': self.updated_at.isoformat("T"),
                 'id': self.id
                 }
