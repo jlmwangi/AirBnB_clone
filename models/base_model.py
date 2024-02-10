@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 import datetime
 import uuid
+from engine import file_storage
+from file_storage import storage
 
 
 class BaseModel():
@@ -19,6 +21,9 @@ class BaseModel():
             self.created_at = datetime.datetime.now()
             self.updated_at = datetime.datetime.now()
 
+        if isinstance(storage, FileStorage) and id not in kwargs:
+            storage.new(self)
+
     def __str__(self):
         """prints string representation of the class"""
         return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
@@ -26,6 +31,7 @@ class BaseModel():
     def save(self):
         """updates updated_at with current datetime"""
         self.updated_at = datetime.datetime.now()
+        storage.new(self)
 
     def to_dict(self):
         """returns a dict containing all key/values of the instance"""
@@ -33,7 +39,7 @@ class BaseModel():
                 'my_number': self.my_number,
                 'name': self.name,
                 '__class__': self.__class__.__name__,
-                'created_at': self.created_at,
-                'updated_at': self.updated_at,
+                'created_at': self.created_at.strftime("%Y-%m-%dT%H:%M:%S.%f"),
+                'updated_at': self.updated_at.strftime("%Y-%m-%dT%H:%M:%S.%f"),
                 'id': self.id
                 }
