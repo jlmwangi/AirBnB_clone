@@ -70,13 +70,15 @@ class HBNBCommand(cmd.Cmd):
         instance = all_instances[key]
         if hasattr(instance, attribute_name):
             if attribute_name in ["id", "created_at", "updated_at"]:
-                print("** cannot update attribute '{}' **".format(attribute_name))
+                print("** cannot update attribute '{}' **"\
+                      .format(attribute_name))
                 return
             attribute_type = type(getattr(instance, attribute_name))
             try:
                 cast_val = attribute_type(att_val)
             except ValueError:
-                print("** invalid value type for attribute '{}' **".format(attribute_name))
+                print("** invalid value type for attribute '{}' **"\
+                      .format(attribute_name))
                 return
 
             setattr(instance, attribute_name, cast_val)
@@ -89,10 +91,12 @@ class HBNBCommand(cmd.Cmd):
         try:
             class_name = args.strip()
             if class_name == "User":
-                instances = [str(instance) for instance in storage.all().values() if isinstance(instance, User)]
+                instances = [str(instance) for instance in storage.all()\
+                             .values() if isinstance(instance, User)]
                 print(instances)
             elif not class_name:
-                instances = [str(instance) for instance in storage.all().values()]
+                instances = [str(instance) for instance in storage.all()\
+                             .values()]
                 print(instances)
             else:
                 print("** class doesn't exist **")
