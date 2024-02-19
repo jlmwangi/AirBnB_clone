@@ -1,0 +1,26 @@
+.locations,
+.amenities {
+	height: 100%;
+	width: 25%;
+	border-right: 1px solid #DDDDDD;
+	display: none;
+	}
+.locations .filter:not(:first-child) {
+	border-right: none;
+}
+.popover {
+	color: #FAFAFA;
+	width: 100%;
+	border: 1px solid #DDDDDD;
+	border-radius: 4px;
+}
+h3 {
+	font-weight: 600;
+}
+h4 {
+	font-weight: 400;
+	font-size: 14px;
+}
+h2 {
+	font-size: 16px;
+}
